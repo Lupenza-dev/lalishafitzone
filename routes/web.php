@@ -20,8 +20,9 @@ Route::post('book/training',[HomeController::class,'bookTraining'])->name('book.
 Route::get('add/cart/{program}',[HomeController::class,'addcart'])->name('add.cart');
 Route::get('remove/cart/{rowId}',[HomeController::class,'removeCart'])->name('remove.cart');
 Route::get('cart/checkout',[HomeController::class,'cartcheckout'])->name('cart.checkout');
+Route::get('cart/checkout/process',[HomeController::class,'cartProcess'])->name('complete.check.out');
 Route::get('program/view/{uuid}',[HomeController::class,'programView'])->name('program.view');
-Route::get('programs/{cat_name?}',[HomeController::class,'allPrograms'])->name('all.programs');
+Route::get('all/programs/{cat_name?}',[HomeController::class,'allPrograms'])->name('all.programs');
 Route::get('blog/view/{uuid}',[HomeController::class,'blogView'])->name('blog.view');
 Route::get('blogs',[HomeController::class,'blogs'])->name('blogs');
 Route::get('contact/us',[HomeController::class,'contactUs'])->name('contact.us');

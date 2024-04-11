@@ -73,6 +73,12 @@
                                 <input type="file" class="form-control" name="images[]"  id="image"  multiple/>
                             </div>
                         </div>
+                        <div class="from-group row mt-2">
+                            <div class="col-md-12">
+                                <label for="">Programs Package <sub class="text-danger">Zip File</sub></label>
+                                <input type="file" class="form-control" name="package"  id="image" required accept="application/zip,application/x-zip-compressed,application/x-compressed"/>
+                            </div>
+                        </div>
                         <div class="form-group row mt-2">
                             <div class="col-md-12" id="alert"></div>
                         </div>

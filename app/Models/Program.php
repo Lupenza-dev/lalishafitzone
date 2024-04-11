@@ -10,7 +10,7 @@ class Program extends Model
 {
     use HasFactory , SoftDeletes;
 
-    protected $fillable =['category_id','name','description','caption','price','cover_page','status','created_by','uuid'];
+    protected $fillable =['category_id','name','description','caption','price','cover_page','status','created_by','uuid','package'];
 
     public function getStatusFormattedAttribute(){
 

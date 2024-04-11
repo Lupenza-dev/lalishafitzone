@@ -88,6 +88,11 @@ class ProgramController extends Controller
                    
                 }
 
+                if ($request->hasFile('package')) {
+                    $program->package =$this->importFile($request->file('package'),$program->name);
+                    $program->save();
+                }
+
             });
         } catch (\Throwable $th) {
             //throw $th;

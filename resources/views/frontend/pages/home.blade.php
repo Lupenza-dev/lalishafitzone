@@ -275,7 +275,7 @@
                                     <div class="product-details">
                                         <!-- Product Name -->
                                         <div class="product-name">
-                                            <a href="product-layout1.html">{{ $program->name }}</a>
+                                            <a href="{{ route('program.view',$program->uuid)}}">{{ $program->name }}</a>
                                         </div>
                                         <!-- End Product Name -->
                                         <!-- Product Price -->

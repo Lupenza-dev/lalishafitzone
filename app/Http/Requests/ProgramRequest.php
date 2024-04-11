@@ -27,6 +27,7 @@ class ProgramRequest extends FormRequest
             'caption'       =>'required',
             'description'   =>'required',
             'price'         =>'required',
+            'package'       =>'required',
         ];
     }
 }

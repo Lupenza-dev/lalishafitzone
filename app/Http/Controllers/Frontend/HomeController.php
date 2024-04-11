@@ -9,12 +9,15 @@ use App\Models\NewsCategory;
 use App\Models\Program;
 use App\Models\Slider;
 use App\Models\Testmonial;
+use App\Traits\PaymentTrait;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Str;
 
 class HomeController extends Controller
 {
+    use PaymentTrait;
+
     public function index(){
        // return Cart::content();
         $data['programs']    =Program::with('category')->latest()->get();
@@ -111,5 +114,10 @@ class HomeController extends Controller
     public function cartcheckout(){
         $big_carts =Cart::content();
         return view('frontend.pages.check_out',compact('big_carts'));
+    }
+
+    public function cartProcess(){
+        $url = $this->checkOutPayment();
+        return redirect()->away($url);
     }
 }

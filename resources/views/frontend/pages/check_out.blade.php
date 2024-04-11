@@ -94,7 +94,7 @@
                                     <span class="col-6 col-sm-6 cart-subtotal-title fs-5 cart-subtotal text-end text-primary"><b class="money">{{ number_format(count($big_carts) ? $big_carts->sum('price') : 0) }}</b></span>
                                 </div>
 
-                                <a href="#" id="cartCheckout" class="btn btn-lg my-4 checkout w-100">Complete Check Out</a>
+                                <a href="{{ route('complete.check.out')}}" id="cartCheckout" class="btn btn-lg my-4 checkout w-100">Complete Check Out</a>
                                 {{-- <div class="paymnet-img text-center"><img src="assets/images/icons/safepayment.png" alt="Payment" width="299" height="28" /></div> --}}
                                 <div class="d-flex-center flex-column justify-content-md-between flex-md-row-reverse">
                                     <ul class="payment-icons d-flex-center mb-2 mb-md-0" style="gap: 5px">
