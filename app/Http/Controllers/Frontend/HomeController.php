@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\BookTraining;
 use App\Models\News;
 use App\Models\NewsCategory;
+use App\Models\PaymentLog;
 use App\Models\Program;
 use App\Models\Slider;
 use App\Models\Testmonial;
@@ -117,7 +118,16 @@ class HomeController extends Controller
     }
 
     public function cartProcess(){
-        $url = $this->checkOutPayment();
+        $payment_log =PaymentLog::create([
+            'amount' =>Cart::content()->sum('price'),
+            'external_id' =>(string)Str::orderedUuid(),
+            'vendor_id' =>(string)Str::orderedUuid(),
+            'uuid' =>(string)Str::orderedUuid(),
+            'program_id' =>json_encode(Cart::content()->pluck('id')),
+            'purchaser' =>1
+        ]);
+        $url = $this->checkOutPayment($payment_log);
+        Cart::destroy();
         return redirect()->away($url);
     }
 }
