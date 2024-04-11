@@ -102,7 +102,7 @@ class HomeController extends Controller
         return view('frontend.pages.blogs',compact('blogs'));
     }
 
-    public function allPrograms($cat_name){
+    public function allPrograms($cat_name = null){
         $programs =Program::latest()->get();
         return view('frontend.pages.all_programs',compact('programs'));
     }

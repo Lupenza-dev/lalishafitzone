@@ -1,5 +1,18 @@
 @extends('frontend.layouts.main')
 @section('content')
+<style>
+    .price-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center
+    }
+    .price{
+        color: #E96F83;
+        font-weight: 900;
+
+    }
+</style>
   <!-- Body Container -->
   <div id="page-content">
     <!--Page Header-->
@@ -342,50 +355,41 @@
                                 </div>
                                 <!-- End Product Image -->
                                 <!-- Start Product Details -->
-                                <div class="product-details text-left">
-                                    <!--Product Vendor-->
-                                    <div class="product-vendor">{{ $program->category?->name}}</div>
-                                    <!--End Product Vendor-->
-                                    <!-- Product Name -->
+                                <div class="product-details">
+                                    <div class="price-container">
+                                         <!-- Product Name -->
                                     <div class="product-name">
-                                        <a href="product-layout1.html">{{ $program->name }}</a>
+                                        <div class="product-review">
+                                            <span class="caption ms-1">{{ $program->category?->name}}</span>
+                                        </div>
+                                        <a href="{{ route('program.view',$program->uuid)}}">{{ $program->name }}</a>
                                     </div>
                                     <!-- End Product Name -->
+
                                     <!-- Product Price -->
                                     <div class="product-price">
-                                        <span class="price">{{ number_format($program->price)}} Tsh</span>
+                                        <span class="price">{{ number_format($program->price) }} TZS</span>
                                     </div>
                                     <!-- End Product Price -->
+                                    </div>
+                                    <div>
+                                        <a href="{{ route('add.cart',$program->id)}}">
+                                        <button class="btn btn-primary w-100 btn-round mt-1 btn-sm"> <i class="icon anm anm-cart-l " style="margin-right: 5px"></i> Add To Cart</button>
+                                        </a>
+                                    </div>
+                                   
                                     <!-- Product Review -->
                                     {{-- <div class="product-review">
-                                        <i class="icon anm anm-star"></i><i class="icon anm anm-star"></i><i class="icon anm anm-star"></i><i class="icon anm anm-star"></i><i class="icon anm anm-star"></i>
-                                        <span class="caption hidden ms-1">8 Reviews</span>
+                                        <span class="caption ms-1">{{ $program->category?->name}}</span>
                                     </div> --}}
                                     <!-- End Product Review -->
-                                    <!--Sort Description-->
-                                    <p class="sort-desc hidden">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage...</p>
-                                    <!--End Sort Description-->
-                                    <!--Color Variant -->
+                                    <!-- Variant -->
                                     {{-- <ul class="variants-clr swatches">
-                                        <li class="swatch medium radius"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="Navy"><img src="assets/images/products/product2.jpg" alt="img" width="625" height="808"></span></li>
-                                        <li class="swatch medium radius"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="Green"><img src="assets/images/products/product2-1.jpg" alt="img" width="625" height="808"></span></li>
-                                        <li class="swatch medium radius"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="Gray"><img src="assets/images/products/product2-2.jpg" alt="img" width="625" height="808"></span></li>
-                                        <li class="swatch medium radius"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="Orange"><img src="assets/images/products/product2-3.jpg" alt="img" width="625" height="808"></span></li>
-                                        <li class="swatch medium radius"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="Yellow"><img src="assets/images/products/product2-4.jpg" alt="img" width="625" height="808"></span></li>
-                                        <li class="swatch medium radius"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="Blue"><img src="assets/images/products/product2-5.jpg" alt="img" width="625" height="808"></span></li>
+                                        <li class="swatch medium radius black"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="black"></span></li>
+                                        <li class="swatch medium radius navy"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="navy"></span></li>
+                                        <li class="swatch medium radius darkgreen"><span class="swatchLbl" data-bs-toggle="tooltip" data-bs-placement="top" title="darkgreen"></span></li>
                                     </ul> --}}
                                     <!-- End Variant -->
-                                    <!-- Product Button -->
-                                    {{-- <div class="button-action hidden">
-                                        <div class="addtocart-btn">
-                                            <form class="addtocart" action="#" method="post">
-                                                <a href="#quickshop-modal" class="btn btn-md quick-shop quick-shop-modal" data-bs-toggle="modal" data-bs-target="#quickshop_modal">
-                                                    <i class="icon anm anm-cart-l me-2"></i><span class="text">Select Options</span>
-                                                </a>
-                                            </form>
-                                        </div>
-                                    </div> --}}
-                                    <!-- End Product Button -->
                                 </div>
                                 <!-- End product details -->
                             </div>

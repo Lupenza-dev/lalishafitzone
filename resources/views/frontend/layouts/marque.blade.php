@@ -18,7 +18,7 @@
                 </div>
                 <div class="flex-item center">
                     <a href="#">
-                        <span> <i class="anm anm-worldwide"></i> BUY ONLINE PICK UP IN STORE</span>
+                        <span> <i class="anm anm-worldwide"></i>TOP NICHE TRAINING PROGRAM</span>
                         <span> <i class="anm anm-truck-l"></i> SECURED PAYMENT</span>
                         <span> <i class="anm anm-redo-ar"></i> FREE RETURNS</span>
                     </a>

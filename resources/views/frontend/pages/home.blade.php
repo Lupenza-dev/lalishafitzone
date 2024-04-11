@@ -1,5 +1,18 @@
 @extends('frontend.layouts.main')
 @section('content')
+<style>
+    .price-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center
+    }
+    .price{
+        color: #E96F83;
+        font-weight: 900;
+
+    }
+</style>
  <!--Home Slideshow-->
  <section class="slideshow slideshow-wrapper">
     <div class="home-slideshow slick-arrow-dots">
@@ -273,20 +286,32 @@
                                     <!-- End Product Image -->
                                     <!-- Start Product Details -->
                                     <div class="product-details">
-                                        <!-- Product Name -->
+                                        <div class="price-container">
+                                             <!-- Product Name -->
                                         <div class="product-name">
+                                            <div class="product-review">
+                                                <span class="caption ms-1">{{ $program->category?->name}}</span>
+                                            </div>
                                             <a href="{{ route('program.view',$program->uuid)}}">{{ $program->name }}</a>
                                         </div>
                                         <!-- End Product Name -->
+
                                         <!-- Product Price -->
                                         <div class="product-price">
                                             <span class="price">{{ number_format($program->price) }} TZS</span>
                                         </div>
                                         <!-- End Product Price -->
-                                        <!-- Product Review -->
-                                        <div class="product-review">
-                                            <span class="caption ms-1">{{ $program->category?->name}}</span>
                                         </div>
+                                        <div>
+                                            <a href="{{ route('add.cart',$program->id)}}">
+                                            <button class="btn btn-primary w-100 btn-round mt-1 btn-sm"> <i class="icon anm anm-cart-l " style="margin-right: 5px"></i> Add To Cart</button>
+                                            </a>
+                                        </div>
+                                       
+                                        <!-- Product Review -->
+                                        {{-- <div class="product-review">
+                                            <span class="caption ms-1">{{ $program->category?->name}}</span>
+                                        </div> --}}
                                         <!-- End Product Review -->
                                         <!-- Variant -->
                                         {{-- <ul class="variants-clr swatches">
