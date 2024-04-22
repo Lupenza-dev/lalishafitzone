@@ -144,12 +144,17 @@
                     <div id="accountBox">
                         <div class="customer-links">
                             <ul class="m-0">
+                                @if (empty(Auth::user()))
                                 <li><a href="{{ route('login')}}"><i class="icon anm anm-sign-in-al"></i>Sign In</a></li>
                                 <li><a href="{{ route('register')}}"><i class="icon anm anm-user-al"></i>Register</a></li>
+                                @endif
+                                @if (Auth::user()?->hasRole('Customer'))
                                 <li><a href="my-account.html"><i class="icon anm anm-user-cil"></i>My Account</a></li>
                                 <li><a href="wishlist-style1.html"><i class="icon anm anm-heart-l"></i>Wishlist</a></li>
                                 <li><a href="compare-style1.html"><i class="icon anm anm-random-r"></i>Compare</a></li>
-                                <li><a href="login.html"><i class="icon anm anm-sign-out-al"></i>Sign out</a></li>
+                                <li><a href="{{ route('logout')}}"><i class="icon anm anm-sign-out-al"></i>Sign out</a></li>  
+                                @endif
+                               
                             </ul>
                         </div>
                     </div>

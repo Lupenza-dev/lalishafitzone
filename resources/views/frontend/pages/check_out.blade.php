@@ -19,7 +19,12 @@
         <!--End Page Header-->
 
         <!--Main Content-->
-        <div class="container">     
+        <div class="container">    
+            @if(session('message'))
+                <div class="alert alert-success">
+                    {{ session('message') }}
+                </div>
+            @endif 
             <!--Checkout Content-->
             <form class="checkout-form" method="post" action="#">
                 <div class="row">

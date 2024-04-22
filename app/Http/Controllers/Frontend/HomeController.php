@@ -13,6 +13,8 @@ use App\Models\Testmonial;
 use App\Traits\PaymentTrait;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Str;
 
 class HomeController extends Controller
@@ -117,7 +119,11 @@ class HomeController extends Controller
         return view('frontend.pages.check_out',compact('big_carts'));
     }
 
-    public function cartProcess(){
+    public function cartProcess(Request $request){
+        if(empty(Auth::user())){
+            Session::put('last_url',$request->headers->get('referer'));
+            return redirect()->back()->with('message', 'Please Login , So you can continue to check out');
+        }
         $payment_log =PaymentLog::create([
             'amount' =>Cart::content()->sum('price'),
             'external_id' =>(string)Str::orderedUuid(),

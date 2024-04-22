@@ -11,6 +11,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use URL;
 use Hash;
+use Illuminate\Support\Facades\Session;
 use Redirect;
 use Spatie\Permission\Models\Role;
 
@@ -69,15 +70,24 @@ class LoginController extends Controller
         if (Auth::attempt(['email' => $username, 'password' => $password],$remember)) {
             $user = User::find(auth()->user()->id);
             if ($user->is_active) { 
-                $user->assignRole(['Super Admin','Admin']);
-               if ($user->hasRole('Admin') || $user->hasRole('Super Admin') || $user->hasRole('customer')) {
+               if ($user->hasRole('Admin') || $user->hasRole('Super Admin') || $user->hasRole('Customer')) {
                 if ($user->hasRole('Admin') || $user->hasRole('Super Admin')) {
                     return response()->json([
                         'success' =>true,
                         'message' =>$user->name.' Welcome Again',
                         'url'     =>URL::to('dashboard')
                     ]);
-                } else {
+                }elseif($user->hasRole('Customer')){
+                    $last_url =Session::get('last_url');
+                    $url =$last_url ?? URL::to('/');
+                    Session::forget('last_url');
+                    return response()->json([
+                        'success' =>true,
+                        'message' =>$user->name.' Welcome Again',
+                        'url'     =>$url,
+                    ]);
+                } 
+                else {
                     return response()->json([
                         'success' =>true,
                         'message' =>$user->name.' Welcome Again',

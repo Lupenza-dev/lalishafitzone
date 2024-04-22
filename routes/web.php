@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
@@ -27,6 +28,8 @@ Route::get('blog/view/{uuid}',[HomeController::class,'blogView'])->name('blog.vi
 Route::get('blogs',[HomeController::class,'blogs'])->name('blogs');
 Route::get('contact/us',[HomeController::class,'contactUs'])->name('contact.us');
 Route::post('authentic/user',[LoginController::class,'authentication'])->name('authenticate.user');
+Route::post('user/register',[RegisterController::class,'storeUser'])->name('register.user');
+
 
 // Auth::routes();
 
