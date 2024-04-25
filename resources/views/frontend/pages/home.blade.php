@@ -21,7 +21,7 @@
             <div class="slideshow-wrap">
                 <picture>
                     <source media="(max-width:767px)" srcset="{{ asset('storage/uploads/'.'/'.$slide->image)}}" width="1150" height="800">
-                    <img class="blur-up lazyload" src="{{ asset('storage/uploads/'.'/'.$slide->image)}}" alt="slideshow" title="" width="1920" height="795" />
+                    <img media="(max-width:767px)" class="blur-up lazyload" src="{{ asset('storage/uploads/'.'/'.$slide->image)}}" alt="slideshow" title="" width="1920" height="795" />
                 </picture> 
                 <div class="container">
                     <div class="slideshow-content slideshow-overlay middle-left">
@@ -248,17 +248,17 @@
                         <div class="row col-row product-options row-cols-xl-4 row-cols-lg-4 row-cols-md-3 row-cols-sm-3 row-cols-2"> 
                             @forelse ($programs as $program)
                             {{-- @dd($program->cover) --}}
-                            <div class="item col-item">
+                            <div class="item col-item" >
                                 <div class="product-box">
                                     <!-- Start Product Image -->
-                                    <div class="product-image">
+                                    <div class="product-image" style="width: 100%; height: 350px">
                                         <!-- Start Product Image -->
                                         <a href="{{ route('program.view',$program->uuid)}}" class="product-img rounded-3">
                                             <!-- Image -->
-                                            <img class="primary blur-up lazyload" data-src="{{ asset('storage/uploads'.'/'.$program->cover['cover1'])}}" src="{{ asset('storage/uploads'.'/'.$program->cover['cover1'])}}" alt="Product" title="Product" width="625" height="808" />
+                                            <img style="width: 100% ; height: 100%; object-fit:cover"  class="primary blur-up lazyload" data-src="{{ asset('storage/uploads'.'/'.$program->cover['cover1'])}}" src="{{ asset('storage/uploads'.'/'.$program->cover['cover1'])}}" alt="Product" title="Product"  />
                                             <!-- End Image -->
                                             <!-- Hover Image -->
-                                            <img class="hover blur-up lazyload" data-src="{{ asset('storage/uploads'.'/'.$program->cover['cover2'])}}" src="{{ asset('storage/uploads'.'/'.$program->cover['cover2'])}}" alt="Product" title="Product" width="625" height="808" />
+                                            <img style="width: 100% ; height: 100%; object-fit:cover" class="hover blur-up lazyload" data-src="{{ asset('storage/uploads'.'/'.$program->cover['cover2'])}}" src="{{ asset('storage/uploads'.'/'.$program->cover['cover2'])}}" alt="Product" title="Product"  />
                                             <!-- End Hover Image -->
                                         </a>
                                         <!-- End Product Image -->
