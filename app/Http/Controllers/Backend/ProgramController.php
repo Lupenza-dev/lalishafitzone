@@ -135,9 +135,18 @@ class ProgramController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        $program_uuid =$request->uuid;
+        $program =Program::where('uuid',$program_uuid)->first();
+
+        $program_pictures =ProgramPicture::where('program_id',$program->id)->delete();
+        $program->delete();
+
+        return response()->json([
+            'success' =>true,
+            'message' =>'Action Done Successfully'
+        ],200);
     }
 
     public function upload(Request $request)

@@ -52,7 +52,9 @@
                                         <td>{{ $item->sub_title }}</td>
                                         <td>{{ $item->caption }}</td>
                                         <td>{!! $item->status_formatted !!}</td>
-                                        <td>Action</td>
+                                        <td>
+                                            <button class="btn btn-danger btn-sm" id="{{ $item->uuid }}" onclick="deleteSlider(id)" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </td>
                                     </tr>
                                 @endforeach
                                
@@ -68,3 +70,45 @@
     </div> <!-- end row -->
 </div> <!-- container-fluid -->
 @endsection
+@push('scripts')
+<script>
+     function deleteSlider(id){
+        Swal.fire({
+            title: "Delete Slider ?",
+            text: "Are you Sure You want to delete this !",
+            icon: "warning",
+            showCancelButton: !0,
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel!",
+            confirmButtonClass: "btn btn-success mt-2",
+            cancelButtonClass: "btn btn-danger ms-2 mt-2",
+            buttonsStyling: !1,
+        }).then(function (t) {
+            if (t.value) {
+                var csrf_tokken =$('meta[name="csrf-token"]').attr('content');
+                $.ajax({
+                        url: "{{ route('slider.destroy')}}", 
+                        method: "POST",
+                        data: {uuid:id,'_token':csrf_tokken,action:'approve'},
+                        success: function(response)
+                    { 
+                    // console.log(response); 
+                        // $.notify(response.message, "success");
+                        Swal.fire({ title: "Deleted!", text: response.message, icon: "success" })
+                        setTimeout(function(){
+                            location.reload();
+                        },500);
+                        },
+                        error: function(response){
+                        Swal.fire({ title: "Deleted!", text: response.responseJson.errors, icon: "warning" })
+
+                         console.log(response.responseText);
+                         //   $.notify(response.responseJson.errors,'error');  
+                        }
+                    });
+            }
+        });
+  }
+</script>
+    
+@endpush

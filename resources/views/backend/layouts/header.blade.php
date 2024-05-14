@@ -3,22 +3,22 @@
                 <div class="navbar-header">
                     <div class="d-flex">
                         <!-- LOGO -->
-                        <div class="navbar-brand-box">
+                        <div class="navbar-brand-box" style="background-color: #fff !important">
                             <a href="index.html" class="logo logo-dark">
                                 <span class="logo-sm">
-                                    <img src="{{ asset('assets/backend/images/logo.svg')}}" alt="" height="22">
+                                    <img src="{{ asset('assets/frontend/images/lalisha_logo.jpeg')}}" alt="" style="height: 70px;">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="{{ asset('assets/backend/images/logo-dark.png')}}" alt="" height="17">
+                                    <img src="{{ asset('assets/frontend/images/lalisha_logo.jpeg')}}" alt="" style="height: 70px;">
                                 </span>
                             </a>
 
                             <a href="index.html" class="logo logo-light">
                                 <span class="logo-sm">
-                                    <img src="{{ asset('assets/backend/images/logo-light.svg')}}" alt="" height="22">
+                                    <img src="{{ asset('assets/frontend/images/lalisha_logo.jpeg')}}" alt="" style="height: 70px;">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="{{ asset('assets/backend/images/logo-light.png')}}" alt="" height="19">
+                                    <img src="{{ asset('assets/frontend/images/lalisha_logo.jpeg')}}" alt="" style="height: 70px;" >
                                 </span>
                             </a>
                         </div>

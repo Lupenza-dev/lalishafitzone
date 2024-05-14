@@ -48,6 +48,13 @@ Route::group(['middleware'=>"auth"],function(){
     Route::get('news/letter/subscribers', [NewsController::class, 'newsSubcribers'])->name('news.subcribers');
     Route::get('list/of/bookings', [BackendHomeController::class, 'bookings'])->name('list.bookings');
     Route::get('orders', [BackendHomeController::class, 'allOrders'])->name('orders');
+    Route::post('delete/category',[CategoryController::class,'destroy'])->name('category.destroy');
+    Route::post('delete/program',[ProgramController::class,'destroy'])->name('program.destroy');
+    Route::post('delete/slider',[SliderController::class,'destroy'])->name('slider.destroy');
+    Route::post('delete/testmonial',[TestmonialController::class,'destroy'])->name('testmonial.destroy');
+    Route::post('delete/aboutUs',[AboutController::class,'destroy'])->name('aboutus.destroy');
+    Route::post('delete/news/category',[NewsController::class,'destroyCategory'])->name('news.category.destroy');
+    Route::post('delete/news',[NewsController::class,'destroy'])->name('destroy.news');
 
     // User
     Route::get('my-account',[UserController::class,'index'])->name('my.account');

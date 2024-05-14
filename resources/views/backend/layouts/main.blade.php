@@ -6,10 +6,11 @@
 <head>
         
         <meta charset="utf-8" />
-        <title>Dashboard | Skote - Admin & Dashboard Template</title>
+        <title>Lalish Fit Zone</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-        <meta content="Themesbrand" name="author" />
+        <meta content="Lalisha Fitness Corner" name="description" />
+        <meta content="Lalisha Fit Zone" name="description" />
+        <meta content="Lalisha" name="author" />
         <!-- App favicon -->
         <link rel="shortcut icon" href=" {{ asset('assets/backend/images/favicon.ico') }}">
         <meta name="csrf-token" content="{{ csrf_token() }}" />
@@ -19,8 +20,10 @@
         <link href=" {{ asset('assets/backend/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
         <link href=" {{ asset('assets/backend/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-        <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
-        <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
+        <!-- Sweet Alert-->
+        <link href="{{ asset('assets/backend/libs/sweetalert2/sweetalert2.min.css')}}" rel="stylesheet" type="text/css" />
+        {{-- <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+        <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet"> --}}
 
           {{-- data table --}}
           <link href="{{ asset('assets/backend/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
@@ -270,17 +273,19 @@
 
         <!-- apexcharts -->
         <script src="{{ asset('assets/backend/libs/apexcharts/apexcharts.min.js') }}"></script>
+         <!-- Sweet Alerts js -->
+         <script src="{{ asset('assets/backend/libs/sweetalert2/sweetalert2.min.js')}}"></script>
 
         <!-- dashboard init -->
         <script src="{{ asset('assets/backend/js/pages/dashboard.init.js') }}"></script>
 
          {{-- data table init --}}
          <script src="{{ asset('assets/backend/js/pages/datatables.init.js')}}"></script>  
-         <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+         {{-- <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
         <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
         <script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
         <script src="https://unpkg.com/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.js"></script>
-        <script src="https://unpkg.com/filepond-plugin-image-edit/dist/filepond-plugin-image-edit.js"></script>
+        <script src="https://unpkg.com/filepond-plugin-image-edit/dist/filepond-plugin-image-edit.js"></script> --}}
 
         <!-- App js -->
         <script src="{{ asset('assets/backend/js/app.js') }}"></script>

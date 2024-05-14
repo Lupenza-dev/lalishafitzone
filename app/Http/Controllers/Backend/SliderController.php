@@ -88,8 +88,14 @@ class SliderController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        $uuid =$request->uuid;
+        $category =Slider::where('uuid',$uuid)->delete();
+
+        return response()->json([
+            'success' =>true,
+            'message' =>'Action Done Successfully'
+        ],200);
     }
 }
