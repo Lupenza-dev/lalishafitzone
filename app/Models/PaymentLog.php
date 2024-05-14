@@ -37,4 +37,10 @@ class PaymentLog extends Model
         }
         return $label;
     }
+
+    public function purchaser_name(){
+        return $this->hasOne(User::class,'id','purchaser');
+    }
+
+
 }

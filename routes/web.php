@@ -47,6 +47,7 @@ Route::group(['middleware'=>"auth"],function(){
     Route::post('store/news/letter', [NewsController::class, 'storeNewsLetter'])->name('news.letter.store');
     Route::get('news/letter/subscribers', [NewsController::class, 'newsSubcribers'])->name('news.subcribers');
     Route::get('list/of/bookings', [BackendHomeController::class, 'bookings'])->name('list.bookings');
+    Route::get('orders', [BackendHomeController::class, 'allOrders'])->name('orders');
 
     // User
     Route::get('my-account',[UserController::class,'index'])->name('my.account');
