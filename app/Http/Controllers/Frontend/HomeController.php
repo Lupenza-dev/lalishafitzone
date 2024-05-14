@@ -130,7 +130,7 @@ class HomeController extends Controller
             'vendor_id' =>(string)Str::orderedUuid(),
             'uuid' =>(string)Str::orderedUuid(),
             'program_id' =>json_encode(Cart::content()->pluck('id')),
-            'purchaser' =>1
+            'purchaser' =>Auth::user()->id,
         ]);
         $url = $this->checkOutPayment($payment_log);
         Cart::destroy();

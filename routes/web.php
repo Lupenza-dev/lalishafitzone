@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\ProgramController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\TestmonialController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',[HomeController::class,'index'])->name('home');
@@ -46,6 +47,9 @@ Route::group(['middleware'=>"auth"],function(){
     Route::post('store/news/letter', [NewsController::class, 'storeNewsLetter'])->name('news.letter.store');
     Route::get('news/letter/subscribers', [NewsController::class, 'newsSubcribers'])->name('news.subcribers');
     Route::get('list/of/bookings', [BackendHomeController::class, 'bookings'])->name('list.bookings');
+
+    // User
+    Route::get('my-account',[UserController::class,'index'])->name('my.account');
 
     Route::resources([
         'categories'    =>CategoryController::class,

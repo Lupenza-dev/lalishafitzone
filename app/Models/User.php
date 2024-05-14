@@ -47,4 +47,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function paymentLogs(){
+        return $this->hasMany(PaymentLog::class,'purchaser','id');
+    }
+
+    public function newsLetter(){
+        return $this->hasOne(NewsSubscriber::class,'email','email');
+    }
 }

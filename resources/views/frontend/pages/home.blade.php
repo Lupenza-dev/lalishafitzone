@@ -21,7 +21,7 @@
             <div class="slideshow-wrap">
                 <picture>
                     <source media="(max-width:767px)" srcset="{{ asset('storage/uploads/'.'/'.$slide->image)}}" width="1150" height="800">
-                    <img media="(max-width:767px)" class="blur-up lazyload" src="{{ asset('storage/uploads/'.'/'.$slide->image)}}" alt="slideshow" title="" width="1920" height="795" />
+                    <img media="(max-width:767px)" class="blur-up lazyload" src="{{ asset('storage/uploads/'.'/'.$slide->image)}}" alt="slideshow" style="height: 620px; object-fit:cover" />
                 </picture> 
                 <div class="container">
                     <div class="slideshow-content slideshow-overlay middle-left">
