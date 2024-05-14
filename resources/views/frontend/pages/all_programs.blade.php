@@ -321,14 +321,14 @@
                         <div class="item col-item">
                             <div class="product-box">
                                 <!-- Start Product Image -->
-                                <div class="product-image">
+                                <div class="product-image" style="width: 100%; height: 200px">
                                     <!-- Start Product Image -->
                                     <a href="product-layout1.html" class="product-img rounded-0">
                                         <!-- Image -->
-                                        <img class="primary rounded-0 blur-up lazyload" data-src="{{ asset('storage/uploads'.'/'.$program->cover['cover1'])}}" src="{{ asset('storage/uploads'.'/'.$program->cover['cover1'])}}" alt="Program" title="Program" width="625" height="808" />
+                                        <img class="primary rounded-0 blur-up lazyload" data-src="{{ asset('storage/uploads'.'/'.$program->cover['cover1'])}}" src="{{ asset('storage/uploads'.'/'.$program->cover['cover1'])}}" alt="Program" title="Program" style="height: 200px; object-fit:cover"  />
                                         <!-- End Image -->
                                         <!-- Hover Image -->
-                                        <img class="hover rounded-0 blur-up lazyload" data-src="{{ asset('storage/uploads'.'/'.$program->cover['cover2'])}}" src="{{ asset('storage/uploads'.'/'.$program->cover['cover2'])}}" alt="Program" title="Program" width="625" height="808" />
+                                        <img class="hover rounded-0 blur-up lazyload" data-src="{{ asset('storage/uploads'.'/'.$program->cover['cover2'])}}" src="{{ asset('storage/uploads'.'/'.$program->cover['cover2'])}}" alt="Program" title="Program" style="height: 200px; object-fit:cover"  />
                                         <!-- End Hover Image -->
                                     </a>
                                     <!-- End Product Image -->

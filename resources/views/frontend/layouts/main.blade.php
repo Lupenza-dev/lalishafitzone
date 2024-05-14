@@ -12,10 +12,10 @@
         <meta name="description" content="description">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Title Of Site -->
-        <title>Hema - Multipurpose eCommerce Bootstrap 5 Html Template</title>
+        <title>Lalisha Fitness</title>
         <meta name="csrf-token" content="{{ csrf_token() }}" />
         <!-- Favicon -->
-        <link rel="shortcut icon" href="{{ asset('assets/frontend/images/favicon.png') }}" />
+        <link rel="shortcut icon" href="{{ asset('assets/frontend/images/lalisha_icon_2.jpeg') }}" />
         <!-- Plugins CSS -->
         <link rel="stylesheet" href="{{ asset('assets/frontend/css/plugins.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/frontend/css/vendor/photoswipe.min.css')}}">

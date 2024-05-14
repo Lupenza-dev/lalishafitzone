@@ -4,7 +4,8 @@
         <div class="row">
             <!--Logo-->
             <div class="logo col-5 col-sm-3 col-md-3 col-lg-2 align-self-center">
-                <p style="font-weight: 900; color: #2F405D; font-size: 20px" >LALISHA</p>
+                {{-- <p style="font-weight: 900; color: #2F405D; font-size: 20px" >LALISHA</p> --}}
+                <a class="logoImg" href="{{ route('home')}}"><img src="{{ asset('assets/frontend/images/lalisha_logo.jpeg')}}" alt="Lalisha" title="Lalisha"  /></a>
                 {{-- <a class="logoImg" href="index.html"><img src="{{ asset('assets/frontend/images/logo.png')}}" alt="Hema Multipurpose Html Template" title="Hema Multipurpose Html Template" width="149" height="39" /></a> --}}
             </div>
             <!--End Logo-->
