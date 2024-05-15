@@ -26,12 +26,22 @@
         <li class="mobile-menu-bottom">
             <div class="mobile-links"> 
                 <ul class="list-inline d-inline-flex flex-column w-100">
-                    <li><a href="{{ route('login')}}" class="d-flex align-items-center"><i class="icon anm anm-sign-in-al"></i>Sign In</a></li>
-                    <li><a href="{{ route('register')}}" class="d-flex align-items-center"><i class="icon anm anm-user-al"></i>Register</a></li>
-                    <li><a href="#" class="d-flex align-items-center"><i class="icon anm anm-user-cil"></i>My Account</a></li>
+                    @if (empty(Auth::user()))
+                    <li class="d-flex align-items-center"><a href="{{ route('login')}}"><i class="icon anm anm-sign-in-al"></i>Sign In</a></li>
+                    <li class="d-flex align-items-center"><a href="{{ route('register')}}"><i class="icon anm anm-user-al"></i>Register</a></li>
+                    @endif
+                    @if (Auth::user()?->hasRole('Customer'))
+                    <li class="d-flex align-items-center"><a href="{{ route('my.account')}}"><i class="icon anm anm-user-cil"></i>My Account</a></li>
+                    {{-- <li><a href="wishlist-style1.html"><i class="icon anm anm-heart-l"></i>Wishlist</a></li>
+                    <li><a href="compare-style1.html"><i class="icon anm anm-random-r"></i>Compare</a></li> --}}
+                    <li class="d-flex align-items-center"><a href="{{ route('logout')}}"><i class="icon anm anm-sign-out-al"></i>Sign out</a></li>  
+                    @endif
+                    {{-- <li><a href="{{ route('login')}}" class="d-flex align-items-center"><i class="icon anm anm-sign-in-al"></i>Sign In</a></li>
+                    <li><a href="{{ route('register')}}" class="d-flex align-items-center"><i class="icon anm anm-user-al"></i>Register</a></li> --}}
+                    {{-- <li><a href="#" class="d-flex align-items-center"><i class="icon anm anm-user-cil"></i>My Account</a></li> --}}
                     <li class="title h5">Need Help?</li>
                     <li><a href="tel:401234567890" class="d-flex align-items-center"><i class="icon anm anm-phone-l"></i> 255 654 638 396</a></li>
-                    <li><a href="mailto:info@example.com" class="d-flex align-items-center"><i class="icon anm anm-envelope-l"></i> info@lalishafitnesscorner.co.tz</a></li>
+                    <li><a href="mailto:info@example.com" class="d-flex align-items-center"><i class="icon anm anm-envelope-l"></i> info@lalishafitzone.co.tz</a></li>
                 </ul>
             </div>
             <div class="mobile-follow mt-2">  

@@ -405,7 +405,9 @@
                                                     <td>{!! $order->status_format !!}</td>
                                                     <td>
                                                         @if ($order->status == 1)
-                                                        <button class="btn btn-primary"><i class="anm anm-download-r"></i> Download</button>
+                                                        <a href="{{ route('download.program',$order->uuid)}}">
+                                                         <button class="btn btn-primary btn-sm btn-rounded"><i class="anm anm-download-r"></i> Download</button>
+                                                        </a>
                                                         @else
                                                         <span class='badge rounded-pill bg-warning custom-badge'>Payment Not Received</span>  
                                                         @endif

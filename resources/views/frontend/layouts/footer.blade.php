@@ -53,7 +53,7 @@
                     <h4 class="h4">Contact Us</h4>
                     <p class="address d-flex"><i class="icon anm anm-map-marker-al pt-1"></i> Address</p>
                     <p class="phone d-flex align-items-center"><i class="icon anm anm-phone-l"></i>  <b class="me-1 d-none">Phone:</b> <a href="tel:401234567890">+255 654 638 396</a></p>
-                    <p class="email d-flex align-items-center"><i class="icon anm anm-envelope-l"></i> <b class="me-1 d-none">Email:</b> <a href="mailto:info@example.com">info@lalishafitnesscorner.co.tz</a></p>
+                    <p class="email d-flex align-items-center"><i class="icon anm anm-envelope-l"></i> <b class="me-1 d-none">Email:</b> <a href="mailto:info@example.com">info@lalishafitzone.co.tz</a></p>
                     <ul class="list-inline social-icons mt-3">
                         <li class="list-inline-item"><a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook"><i class="icon anm anm-facebook-f"></i></a></li>
                         <li class="list-inline-item"><a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter"><i class="icon anm anm-twitter"></i></a></li>

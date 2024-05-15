@@ -140,6 +140,7 @@
                 </div>
                 <!--End Search-->
                 <!--Account-->
+              
                 <div class="account-parent iconset">
                     <div class="account-link" title="Account"><i class="hdr-icon icon anm anm-user-al"></i></div>
                     <div id="accountBox">
@@ -160,6 +161,7 @@
                         </div>
                     </div>
                 </div>
+                 
                 <!--End Account-->
                 <!--Wishlist-->
                 {{-- <div class="wishlist-link iconset" title="Wishlist"><a href="wishlist-style1.html"><i class="hdr-icon icon anm anm-heart-l"></i><span class="wishlist-count">0</span></a></div> --}}

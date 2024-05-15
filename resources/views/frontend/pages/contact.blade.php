@@ -89,7 +89,7 @@
                                 <p><i class="icon anm anm-map-marker-al me-2 d-none"></i> Address</p>
                             </li>
                             <li class="mb-2 phone"><strong>Phone :</strong><i class="icon anm anm-phone me-2 d-none"></i> <a href="tel:401234567890">+255 654 638 396</a></li>
-                            <li class="mb-0 email"><strong>Email :</strong><i class="icon anm anm-envelope-l me-2 d-none"></i> <a href="mailto:info@lalishafitnesscorner.co.tz">info@lalishafitnesscorner.co.tz</a></li>
+                            <li class="mb-0 email"><strong>Email :</strong><i class="icon anm anm-envelope-l me-2 d-none"></i> <a href="mailto:info@lalishafitzone.co.tz">info@lalishafitzone.co.tz</a></li>
                         </ul>
                         <hr>
                         <div class="open-hours">

@@ -58,6 +58,7 @@ Route::group(['middleware'=>"auth"],function(){
 
     // User
     Route::get('my-account',[UserController::class,'index'])->name('my.account');
+    Route::get('download-program/{uuid}',[UserController::class,'downloadProgram'])->name('download.program');
 
     Route::resources([
         'categories'    =>CategoryController::class,
