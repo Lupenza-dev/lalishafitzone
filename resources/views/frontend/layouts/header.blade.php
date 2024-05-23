@@ -156,6 +156,12 @@
                                 <li><a href="compare-style1.html"><i class="icon anm anm-random-r"></i>Compare</a></li> --}}
                                 <li><a href="{{ route('logout')}}"><i class="icon anm anm-sign-out-al"></i>Sign out</a></li>  
                                 @endif
+                                @if (Auth::user()?->hasRole('Admin') || Auth::user()?->hasRole('Super Admin') )
+                                <li><a href="{{ route('dashboard')}}"><i class="icon anm anm-home"></i>Dashboard</a></li>
+                                {{-- <li><a href="wishlist-style1.html"><i class="icon anm anm-heart-l"></i>Wishlist</a></li>
+                                <li><a href="compare-style1.html"><i class="icon anm anm-random-r"></i>Compare</a></li> --}}
+                                <li><a href="{{ route('logout')}}"><i class="icon anm anm-sign-out-al"></i>Sign out</a></li>  
+                                @endif
                                
                             </ul>
                         </div>
