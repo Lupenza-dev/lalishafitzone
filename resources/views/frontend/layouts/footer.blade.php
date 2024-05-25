@@ -25,7 +25,7 @@
                     <ul>
                         <li><a href="{{ route('login')}}">Login</a></li>
                         <li><a href="{{ route('register')}}">Register</a></li>
-                        <li><a href="#">My Account</a></li>
+                        {{-- <li><a href="#">My Account</a></li> --}}
                         <li><a href="#">Privacy policy</a></li>
                         <li><a href="#">Terms &amp; condition</a></li>
                     </ul>
@@ -33,7 +33,7 @@
                 <div class="col-12 col-sm-12 col-md-4 col-lg-4 footer-links">
                     <h4 class="h4">Quick Pages</h4>
                     <ul>
-                        <li><a href="#">About Us</a></li>
+                        <li><a href="{{ route('about.us')}}">About Us</a></li>
                         <li><a href="{{ route('all.programs')}}">Programs </a></li>
                         <li><a href="{{ route('blogs')}}">Blogs</a></li>
                         <li><a href="{{ route('contact.us')}}">Contact Us</a></li>

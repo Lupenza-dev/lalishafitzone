@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\AboutUsPage;
 use App\Models\BookTraining;
 use App\Models\News;
 use App\Models\NewsCategory;
@@ -135,5 +136,10 @@ class HomeController extends Controller
         $url = $this->checkOutPayment($payment_log);
         Cart::destroy();
         return redirect()->away($url);
+    }
+
+    public function aboutUs(){
+        $data =AboutUsPage::first();
+        return view('frontend.pages.about_us',compact('data'));
     }
 }

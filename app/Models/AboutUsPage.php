@@ -23,5 +23,14 @@ class AboutUsPage extends Model
         }
         
     }
+
+    public function getImagesAttribute(){
+        $image =$this->gallery;
+        $image =json_decode($image);
+        return [
+            'gallery1' =>$image[0]->gallery1,
+            'gallery2' =>$image[1]->gallery2
+        ];
+    }
     
 }

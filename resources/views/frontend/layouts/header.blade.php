@@ -15,7 +15,7 @@
                     <ul id="siteNav" class="site-nav medium center">
                         <li class="lvl1 parent"><a href="{{ route('home')}}">Home </a>
                         </li>
-                        <li class="lvl1 parent"><a href="#">About Us</a>
+                        <li class="lvl1 parent"><a href="{{ route('about.us')}}">About Us</a>
                         </li>
                         <li class="lvl1 parent dropdown"><a href="#">Program <i class="icon anm anm-angle-down-l"></i></a>
                             <ul class="dropdown">

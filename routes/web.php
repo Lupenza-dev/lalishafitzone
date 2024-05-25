@@ -28,6 +28,7 @@ Route::get('all/programs/{cat_name?}',[HomeController::class,'allPrograms'])->na
 Route::get('blog/view/{uuid}',[HomeController::class,'blogView'])->name('blog.view');
 Route::get('blogs',[HomeController::class,'blogs'])->name('blogs');
 Route::get('contact/us',[HomeController::class,'contactUs'])->name('contact.us');
+Route::get('about/us',[HomeController::class,'aboutUs'])->name('about.us');
 Route::post('authentic/user',[LoginController::class,'authentication'])->name('authenticate.user');
 Route::post('user/register',[RegisterController::class,'storeUser'])->name('register.user');
 
