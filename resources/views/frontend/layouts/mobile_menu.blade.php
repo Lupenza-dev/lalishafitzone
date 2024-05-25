@@ -3,7 +3,7 @@
     <ul id="MobileNav" class="mobile-nav">
         <li class="lvl1 parent"><a href="{{ route('home')}}">Home </a>
         </li>
-        <li class="lvl1 parent"><a href="#">About Us</a>
+        <li class="lvl1 parent"><a href="{{ route('about.us')}}">About Us</a>
         </li>
         <li class="lvl1 parent dropdown"><a href="#">Program <i class="icon anm anm-angle-down-l"></i></a>
             <ul class="dropdown">
@@ -32,8 +32,10 @@
                     @endif
                     @if (Auth::user()?->hasRole('Customer'))
                     <li class="d-flex align-items-center"><a href="{{ route('my.account')}}"><i class="icon anm anm-user-cil"></i>My Account</a></li>
-                    {{-- <li><a href="wishlist-style1.html"><i class="icon anm anm-heart-l"></i>Wishlist</a></li>
-                    <li><a href="compare-style1.html"><i class="icon anm anm-random-r"></i>Compare</a></li> --}}
+                    <li class="d-flex align-items-center"><a href="{{ route('logout')}}"><i class="icon anm anm-sign-out-al"></i>Sign out</a></li>  
+                    @endif
+                    @if (Auth::user()?->hasRole('Admin') || Auth::user()?->hasRole('Super Admin'))
+                    <li class="d-flex align-items-center"><a href="{{ route('dashboard')}}"><i class="icon anm anm-home"></i>Dashboard</a></li>
                     <li class="d-flex align-items-center"><a href="{{ route('logout')}}"><i class="icon anm anm-sign-out-al"></i>Sign out</a></li>  
                     @endif
                     {{-- <li><a href="{{ route('login')}}" class="d-flex align-items-center"><i class="icon anm anm-sign-in-al"></i>Sign In</a></li>
