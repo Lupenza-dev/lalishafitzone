@@ -35,29 +35,29 @@
                         <div class="form-group row mt-2">
                             <div class="col-md-6">
                                 <label for="">Vision</label>
-                                <textarea name="vision" class="form-control" placeholder="Write Vision...."></textarea>
+                                <textarea name="vision" class="form-control" placeholder="Write Vision...." required></textarea>
                             </div>
                             <div class="col-md-6">
                                 <label for="">Mission</label>
-                                <textarea name="mission" class="form-control" placeholder="Write Mission...."></textarea>
+                                <textarea name="mission" class="form-control" placeholder="Write Mission...." required></textarea>
                             </div>
                         </div>
                         <div class="form-group row mt-2">
                             <div class="col-md-12">
                                 <label for="">Description</label>
-                                <textarea name="description" id="editor"></textarea>
+                                <textarea name="description" id="editor" required></textarea>
                             </div>
                         </div>
                         <div class="from-group row mt-2">
                             <div class="col-md-12">
-                                <label for="">Cover Images <sub class="text-danger">Max 1 Images</sub> </label>
-                                <input type="file" name="cover" class="form-control"   id="cover" multiple/>
+                                <label for="">Cover Images <sub class="text-danger">One 1 Image needed</sub> </label>
+                                <input type="file" name="cover" class="form-control"   id="cover" required/>
                             </div>
                         </div>
                         <div class="from-group row mt-2">
                             <div class="col-md-12">
-                                <label for="">Gallery Images </label>
-                                <input type="file" name="images[]" class="form-control"  id="image"  multiple/>
+                                <label for="">Gallery Images  <sub class="text-danger">2 Images Needed</sub></label>
+                                <input type="file" name="images[]" class="form-control"  id="image"  multiple required/>
                             </div>
                         </div>
                         <div class="form-group row mt-2">

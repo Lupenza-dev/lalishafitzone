@@ -140,6 +140,10 @@ class HomeController extends Controller
 
     public function aboutUs(){
         $data =AboutUsPage::first();
+        if ($data) {
         return view('frontend.pages.about_us',compact('data'));
+        }else{
+            return "Coming Soon";
+        }
     }
 }
