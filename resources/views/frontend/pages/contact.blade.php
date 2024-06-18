@@ -30,17 +30,17 @@
                             <p>You can contact us any way that is convenient for you. We are available 24/7 via phone call or email. You can also use a quick contact form below. We would be happy to answer your questions.</p>
                         </div>
 
-                        <form action="" name="contactus" method="post" id="contact-form" class="contact-form">	
+                        <form action="" name="contactus" method="post" id="contact_us">	
                             <div class="form-row">
                                 <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                                     <div class="form-group">
-                                        <input type="text" id="ContactFormName" name="name" class="form-control" placeholder="Name" />
+                                        <input type="text" id="ContactFormName" name="name" class="form-control" placeholder="Name" required />
                                         <span class="error_msg" id="name_error"></span>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-6 col-lg-6">                               
                                     <div class="form-group">
-                                        <input type="email" id="ContactFormEmail" name="email" class="form-control" placeholder="Email" />
+                                        <input type="email" id="ContactFormEmail" name="email" class="form-control" placeholder="Email" required />
                                         <span class="error_msg" id="email_error"></span>
                                     </div>
                                 </div>
@@ -53,7 +53,7 @@
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                                     <div class="form-group">
-                                        <input type="text" id="ContactSubject" name="subject" class="form-control" placeholder="Subject" />
+                                        <input type="text" id="ContactSubject" name="subject" class="form-control" placeholder="Subject" required />
                                         <span class="error_msg" id="subject_error"></span>
                                     </div>
                                 </div>
@@ -61,15 +61,19 @@
                             <div class="form-row">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                                     <div class="form-group">
-                                        <textarea id="ContactFormMessage" name="message" class="form-control" rows="5" placeholder="Message"></textarea>
+                                        <textarea id="ContactFormMessage" name="message" class="form-control" rows="5" placeholder="Message" required></textarea>
                                         <span class="error_msg" id="message_error"></span>
                                     </div>
                                 </div>  
                             </div>
+                            <div class="row">
+                                <div class="col-md-12" id="contact_alert"></div>
+                            </div>
                             <div class="form-row">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                                     <div class="form-group mailsendbtn mb-0 w-100">	
-                                        <input class="btn btn-lg" type="submit" name="contactus" value="Send Message" />
+                                        {{-- <input class="btn btn-lg" type="submit" name="contactus" value="Send Message" /> --}}
+                                        <button class="btn btn-primary btn-lg w-100" id="contact_btn" type="submit"><i class="icon anm anm-sign-in-ar" style="margin-right: 2px"></i>  Send Message </button>
                                         <div class="loading"><img class="img-fluid" src="assets/images/icons/ajax-loader.gif" alt="loading" width="16" height="16"></div>
                                     </div>
                                 </div>
@@ -123,3 +127,51 @@
 <!-- End Body Container -->
     
 @endsection
+@push('scripts')
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#contact_us').on('submit',function(e){
+            e.preventDefault();
+         var dataz =$(this).serialize();
+            $.ajaxSetup({
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+             }
+            });
+  
+        $.ajax({
+        type:'POST',
+        url:"{{ route('message.us')}}",
+        data:dataz,
+        success:function(response){
+            console.log(response);
+            $.notify(response.message, "success");
+          setTimeout(function(){
+            location.reload();
+          },500);
+        },
+        error:function(response){
+            console.log(response.responseText);
+            if (jQuery.type(response.responseJSON.errors) == "object") {
+              $('#contact_alert').html('');
+            $.each(response.responseJSON.errors,function(key,value){
+                $('#contact_alert').append('<div class="alert alert-danger">'+value+'</div>');
+            });
+            } else {
+               $('#contact_alert').html('<div class="alert alert-danger">'+response.responseJSON.errors+'</div>');
+            }
+        },
+        beforeSend : function(){
+            $('#contact_btn').html('<span class="fas fa-spinner fas-pulse fas-spin"></span> loading......');
+            $('#contact_btn').attr('disabled', true);
+        },
+       complete : function(){
+            $('#contact_btn').html('<span class="fas fa-sign-in-alt"></span> Book');
+            $('#contact_btn').attr('disabled', false);
+        }
+        });
+    });
+    });
+  </script>
+    
+@endpush

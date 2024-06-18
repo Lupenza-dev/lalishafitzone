@@ -43,5 +43,10 @@ class PaymentLog extends Model
         return $this->hasOne(User::class,'id','purchaser');
     }
 
+    public function getProgramsAttribute(){
+        $programs =Program::whereIn('id',json_decode($this->program_id))->get();
+        return $programs;
+    }
+
 
 }

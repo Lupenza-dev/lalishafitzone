@@ -31,7 +31,7 @@ Route::get('contact/us',[HomeController::class,'contactUs'])->name('contact.us')
 Route::get('about/us',[HomeController::class,'aboutUs'])->name('about.us');
 Route::post('authentic/user',[LoginController::class,'authentication'])->name('authenticate.user');
 Route::post('user/register',[RegisterController::class,'storeUser'])->name('register.user');
-
+Route::post('message/us',[HomeController::class,'messageUs'])->name('message.us');
 
 // Auth::routes();
 

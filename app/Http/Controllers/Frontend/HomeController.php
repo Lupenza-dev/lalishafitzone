@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\AboutUsPage;
 use App\Models\BookTraining;
+use App\Models\MessageUs;
 use App\Models\News;
 use App\Models\NewsCategory;
 use App\Models\PaymentLog;
@@ -145,5 +146,32 @@ class HomeController extends Controller
         }else{
             return "Coming Soon";
         }
+    }
+
+    public function messageUs(Request $request){
+
+        $valid =$request->validate([
+            'name' =>['required'],
+            'email' =>'required',
+            'phone' =>'required',
+            'subject'   =>'required',
+            'message'  =>'required',
+        ]);
+
+        MessageUs::updateOrCreate([
+            'email'   =>$valid['email'],
+            'subject' =>$valid['subject'],
+            'name'    =>$valid['name'],
+        ],[
+            'phone_number' =>$valid['phone'],
+            'message' =>$valid['message'],
+            'url' =>$request->headers->get('referer') ?? null,
+        ]);
+
+        return response()->json([
+            'success' =>true,
+            'message' =>"Thanks For Contact Us , We will reach you as soon as possible"
+        ],200);
+
     }
 }

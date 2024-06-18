@@ -1,5 +1,57 @@
 @extends('frontend.layouts.main')
 @section('content')
+<style>
+    /* Container needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Style the button */
+.dropbtn {
+    background-color: #3498db;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #2980b9;
+}
+
+</style>
 
     @php
         $orders =Auth::user()->paymentLogs;
@@ -377,8 +429,8 @@
                         <!-- End Address Book -->
 
                         <!-- My Orders -->
-                        <div class="tab-pane fade h-100" id="orders">
-                            <div class="orders-card mt-0 h-100">    
+                        <div class="tab-pane fade" id="orders">
+                            <div class="orders-card mt-0">    
                                 <div class="top-sec d-flex-justify-center justify-content-between mb-4">
                                     <h2 class="mb-0">My Orders</h2>
                                 </div>
@@ -404,10 +456,18 @@
                                                     <td>{{ number_format($order->amount) }}</td>
                                                     <td>{!! $order->status_format !!}</td>
                                                     <td>
-                                                        @if ($order->status == 1)
-                                                        <a href="{{ route('download.program',$order->uuid)}}">
+                                                        @if ($order->status == 1 or true)
+                                                        {{-- <a href="{{ route('download.program',$order->uuid)}}">
                                                          <button class="btn btn-primary btn-sm btn-rounded"><i class="anm anm-download-r"></i> Download</button>
-                                                        </a>
+                                                        </a> --}}
+                                                        <div class="dropdown">
+                                                            <button class="dropbtn">Download <i class="anm anm-angle-down-r"></i></button>
+                                                            <div class="dropdown-content">
+                                                                @foreach ($order->programs as $program)
+                                                                <a href="{{ route('download.program',$program->uuid)}}" download="">{{ $program->name}}</a>
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
                                                         @else
                                                         <span class='badge rounded-pill bg-warning custom-badge'>Payment Not Received</span>  
                                                         @endif
@@ -1158,3 +1218,22 @@
     <!-- End Body Container -->
     
 @endsection
+@push('scripts')
+<script>
+    document.addEventListener('click', function(event) {
+    var dropdowns = document.querySelectorAll('.dropdown-content');
+    dropdowns.forEach(function(dropdown) {
+        if (!dropdown.parentElement.contains(event.target)) {
+            dropdown.style.display = 'none';
+        }
+    });
+    
+    if (event.target.matches('.dropbtn')) {
+        var dropdownContent = event.target.nextElementSibling;
+        dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+    }
+});
+
+</script>
+    
+@endpush

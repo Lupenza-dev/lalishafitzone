@@ -7,6 +7,7 @@ use App\Models\PaymentLog;
 use App\Models\Program;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use ZipArchive;
 
 class UserController extends Controller
@@ -17,35 +18,27 @@ class UserController extends Controller
     }
 
     public function downloadProgram($uuid){
-        $payment =PaymentLog::where('uuid',$uuid)->first();
-
-        $files =Program::whereIn('id',json_decode($payment->program_id))->get();
-       
-        $zipFileName = 'files-' . time() . '.zip';
-        $zipPath = storage_path('app/' . $zipFileName);
-
-        // Creating a new ZIP archive
-        $zip = new ZipArchive;
-        if ($zip->open($zipPath, ZipArchive::CREATE) === TRUE) {
-            // Add files to the ZIP file
-            foreach ($files as $file) {
-                $filePath = storage_path('storage/uploads/' . $file->package);
-                if (file_exists($filePath)) {
-                    // Add the file to the zip
-                    $zip->addFile($filePath, $file->package);
-                }
-            }
-            // Close and save the archive
-            $zip->close();
-        } else {
-            abort(500, 'Cannot create a zip file.');
+        $program = Program::where('uuid', $uuid)->first();
+    
+        if (!$program) {
+            return response()->json(['error' => 'Program not found.'], 404);
         }
-
-        // Check if the ZIP file was created
-        if (!file_exists($zipPath)) {
-            abort(500, 'Zip file does not exist.');
+    
+        $filePath = 'uploads/'. $program->package; // Path relative to the storage/app/public directory
+        return response()->download(storage_path($filePath));
+        // Debugging: Log the resolved path to see where it is looking for the file
+        $resolvedPath = storage_path('app/public/' . $filePath);
+        \Log::info('Resolved Path: ' . $resolvedPath);
+    
+        // Use the public disk to check the file
+        if (!Storage::disk('public')->exists($filePath)) {
+            return response()->json(['error' => 'File not found at ' . $resolvedPath], 404);
         }
+    
+        $fileName = basename($filePath);
+    
+        // Use the public disk to download the file
+        return Storage::disk('public')->download($filePath, $fileName);
 
-        return response()->download($zipPath)->deleteFileAfterSend(true);
     }
 }
