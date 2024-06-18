@@ -56,7 +56,7 @@ Route::group(['middleware'=>"auth"],function(){
     Route::post('delete/aboutUs',[AboutController::class,'destroy'])->name('aboutus.destroy');
     Route::post('delete/news/category',[NewsController::class,'destroyCategory'])->name('news.category.destroy');
     Route::post('delete/news',[NewsController::class,'destroy'])->name('destroy.news');
-
+    Route::get('list/message/us',[BackendHomeController::class,'messageUs'])->name('list.message.us');
     // User
     Route::get('my-account',[UserController::class,'index'])->name('my.account');
     Route::get('download-program/{uuid}',[UserController::class,'downloadProgram'])->name('download.program');

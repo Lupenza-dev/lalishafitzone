@@ -63,6 +63,12 @@
                 <span key="t-chat">Trainer Booking</span>
             </a>
         </li>
+        <li>
+            <a href="{{ route('list.message.us')}}" class="waves-effect">
+                <i class="bx bx-list-ul"></i>
+                <span key="t-chat">Reached Us</span>
+            </a>
+        </li>
         <li class="menu-title" key="t-menu">Orders</li>
         <li>
             <a href="{{ route('orders')}}" class="waves-effect">
