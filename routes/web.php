@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\FaqCategoryController;
 use App\Http\Controllers\Backend\HomeController as BackendHomeController;
 use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\ProgramController;
@@ -61,6 +62,11 @@ Route::group(['middleware'=>"auth"],function(){
     Route::get('my-account',[UserController::class,'index'])->name('my.account');
     Route::get('download-program/{uuid}',[UserController::class,'downloadProgram'])->name('download.program');
 
+    // FAQ Categories Routes - Using the same pattern as other resources
+    Route::get('faq-categories', [FaqCategoryController::class, 'index'])->name('faq-categories.index');
+    Route::post('faq-categories', [FaqCategoryController::class, 'store'])->name('faq-categories.store');
+    Route::post('delete/faq-category', [FaqCategoryController::class, 'destroy'])->name('faq-category.destroy');
+    
     Route::resources([
         'categories'    =>CategoryController::class,
         'programs'      =>ProgramController::class,
@@ -70,4 +76,3 @@ Route::group(['middleware'=>"auth"],function(){
         'news'          =>NewsController::class,
     ]);
 });
-

@@ -52,6 +52,12 @@
             </a>
         </li>
         <li>
+            <a href="{{ route('faq-categories.index')}}" class="waves-effect">
+                <i class="bx bx-help-circle"></i>
+                <span>FAQ Categories</span>
+            </a>
+        </li>
+        <li>
             <a href="{{ route('news.subcribers')}}" class="waves-effect">
                 <i class="bx bx-user"></i>
                 <span key="t-chat">News Subscribers</span>
