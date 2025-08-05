@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Program extends Model
+class Program extends Model implements HasMedia
 {
-    use HasFactory , SoftDeletes;
+    use HasFactory , SoftDeletes,InteractsWithMedia;
 
     protected $fillable =['category_id','name','description','caption','price','cover_page','status','created_by','uuid','package'];
 

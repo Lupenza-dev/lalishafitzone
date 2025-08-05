@@ -59,9 +59,13 @@ class NewsController extends Controller
             'created_by'    =>Auth::user()->id,
         ]);
 
+        // if ($request->hasFile('cover')) {
+        //     $news->image =$this->importFile($request->file('cover'),$news->title);
+        //     $news->save();
+        // }
+
         if ($request->hasFile('cover')) {
-            $news->image =$this->importFile($request->file('cover'),$news->title);
-            $news->save();
+            $news->addMedia($request['cover'])->toMediaCollection('images');
         }
 
         return response()->json([
@@ -100,7 +104,10 @@ class NewsController extends Controller
     public function destroy(Request $request)
     {
         $uuid =$request->uuid;
-        $category =News::where('uuid',$uuid)->delete();
+        $news =News::where('uuid',$uuid)->delete();
+
+        $news->clearMediaCollection('images');
+
         return response()->json([
             'success' =>true,
             'message' =>'Action Done Successfully'
@@ -109,7 +116,8 @@ class NewsController extends Controller
 
     public function destroyCategory(Request $request){
         $uuid =$request->uuid;
-        $category =NewsCategory::where('uuid',$uuid)->delete();
+        $news =NewsCategory::where('uuid',$uuid)->delete();
+
         return response()->json([
             'success' =>true,
             'message' =>'Action Done Successfully'

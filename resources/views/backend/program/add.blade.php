@@ -63,14 +63,14 @@
                         </div>
                         <div class="from-group row mt-2">
                             <div class="col-md-12">
-                                <label for="">Cover Images <sub class="text-danger">Max 2 Images</sub> </label>
-                                <input type="file" name="cover[]" class="form-control"   id="cover" multiple/>
+                                <label for="">Cover Images </label>
+                                <input type="file" name="cover" class="form-control"   id="cover" multiple/>
                             </div>
                         </div>
                         <div class="from-group row mt-2">
                             <div class="col-md-12">
-                                <label for="">Programs Images </label>
-                                <input type="file" class="form-control" name="images[]"  id="image"  multiple/>
+                                <label for="">Program Sample Video </label>
+                                <input type="file" class="form-control" name="video"  id="image"  multiple/>
                             </div>
                         </div>
                         <div class="from-group row mt-2">

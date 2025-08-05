@@ -44,7 +44,7 @@ class ProgramController extends Controller
     public function store(ProgramRequest $request)
     {
         $valid =$request->validated();
-
+        Log::debug(json_encode($valid));
         try {
             DB::transaction(function() use ($valid,$request){
                 $program =Program::create([
@@ -58,39 +58,17 @@ class ProgramController extends Controller
                 ]);
 
                 if ($request->hasFile('cover')) {
-                    $files = array();
-                    $x =1;
-                    foreach ($request->file('cover') as $file) {
-                        if ($file->isValid()) {
-                            $files[] = [
-                                'cover'.$x =>$this->importFile($file,$program->name)
-                            ];
-                        }
-                        $x++;
-                    }
-                
-                    if (count($files) > 0) {
-                        $program->cover_page = json_encode($files);
-                        $program->save();
-                    }
+                     $program->addMedia($request['cover'])->toMediaCollection('images');
                 }
 
-                if ($request->hasFile('images')) {
-                    foreach ($request->file('images') as $file) {
-                        if ($file->isValid()) {
-                            $picture =ProgramPicture::create([
-                                'program_id' =>$program->id,
-                                'image'      =>$this->importFile($file,$program->name),
-                                'uuid'       =>(string)Str::orderedUuid()
-                            ]);
-                        }
-                    }
-                   
+                if ($request->hasFile('video')) {
+                    $program->addMedia($request['video'])->toMediaCollection('videos');
                 }
 
                 if ($request->hasFile('package')) {
-                    $program->package =$this->importFile($request->file('package'),$program->name);
-                    $program->save();
+                     $program->addMedia($request['package'])->toMediaCollection('packages');
+                    // $program->package =$this->importFile($request->file('package'),$program->name);
+                    // $program->save();
                 }
 
             });
@@ -142,6 +120,11 @@ class ProgramController extends Controller
 
         $program_pictures =ProgramPicture::where('program_id',$program->id)->delete();
         $program->delete();
+
+        $program->clearMediaCollection('images');
+        $program->clearMediaCollection('videos');
+        $program->clearMediaCollection('packages');
+
 
         return response()->json([
             'success' =>true,

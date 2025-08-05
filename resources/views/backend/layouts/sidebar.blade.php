@@ -52,10 +52,14 @@
             </a>
         </li>
         <li>
-            <a href="{{ route('faq-categories.index')}}" class="waves-effect">
+            <a href="javascript: void(0);" class="has-arrow waves-effect">
                 <i class="bx bx-help-circle"></i>
-                <span>FAQ Categories</span>
+                <span>FAQs</span>
             </a>
+            <ul class="sub-menu" aria-expanded="false">
+                <li><a href="{{ route('faq-categories.index') }}">FAQ Categories</a></li>
+                <li><a href="{{ route('faqs.index') }}">FAQs</a></li>
+            </ul>
         </li>
         <li>
             <a href="{{ route('news.subcribers')}}" class="waves-effect">

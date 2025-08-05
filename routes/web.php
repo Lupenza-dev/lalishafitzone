@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\FaqCategoryController;
+use App\Http\Controllers\Backend\FaqController;
 use App\Http\Controllers\Backend\HomeController as BackendHomeController;
 use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\ProgramController;
@@ -62,10 +63,18 @@ Route::group(['middleware'=>"auth"],function(){
     Route::get('my-account',[UserController::class,'index'])->name('my.account');
     Route::get('download-program/{uuid}',[UserController::class,'downloadProgram'])->name('download.program');
 
-    // FAQ Categories Routes - Using the same pattern as other resources
+    // FAQ Categories Routes
     Route::get('faq-categories', [FaqCategoryController::class, 'index'])->name('faq-categories.index');
     Route::post('faq-categories', [FaqCategoryController::class, 'store'])->name('faq-categories.store');
     Route::post('delete/faq-category', [FaqCategoryController::class, 'destroy'])->name('faq-category.destroy');
+    
+    // FAQ Routes
+    Route::get('faqs', [FaqController::class, 'index'])->name('faqs.index');
+    Route::get('faqs/create', [FaqController::class, 'create'])->name('faqs.create');
+    Route::post('faqs', [FaqController::class, 'store'])->name('faqs.store');
+    Route::get('faqs/{uuid}/edit', [FaqController::class, 'edit'])->name('faqs.edit');
+    Route::match(['put', 'post'], 'faqs/{uuid}', [FaqController::class, 'update'])->name('faqs.update');
+    Route::post('delete/faq', [FaqController::class, 'destroy'])->name('faqs.destroy');
     
     Route::resources([
         'categories'    =>CategoryController::class,

@@ -43,7 +43,7 @@ class TestmonialController extends Controller
             'image'         =>'required',
         ]);
 
-        $slider =Testmonial::create([
+        $testmonial =Testmonial::create([
             'name'     =>$valid['name'],
             'designation' =>$valid['designation'],
             'description'   =>$valid['description'],
@@ -51,9 +51,13 @@ class TestmonialController extends Controller
             'created_by'    =>Auth::user()->id,
         ]);
 
+        // if ($request->hasFile('image')) {
+        //     $slider->image =$this->importFile($request->file('image'),$slider->title);
+        //     $slider->save();
+        // }
+
         if ($request->hasFile('image')) {
-            $slider->image =$this->importFile($request->file('image'),$slider->title);
-            $slider->save();
+            $testmonial->addMedia($request['image'])->toMediaCollection('images');
         }
 
         return response()->json([
@@ -92,7 +96,10 @@ class TestmonialController extends Controller
     public function destroy(Request $request)
     {
         $uuid =$request->uuid;
-        $category =Testmonial::where('uuid',$uuid)->delete();
+        $testmonial =Testmonial::where('uuid',$uuid)->delete();
+
+        $testmonial->clearMediaCollection('images');
+
 
         return response()->json([
             'success' =>true,

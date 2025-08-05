@@ -50,9 +50,13 @@ class SliderController extends Controller
             'created_by' =>Auth::user()->id,
         ]);
 
+        // if ($request->hasFile('image')) {
+        //     $slider->image =$this->importFile($request->file('image'),$slider->title);
+        //     $slider->save();
+        // }
+
         if ($request->hasFile('image')) {
-            $slider->image =$this->importFile($request->file('image'),$slider->title);
-            $slider->save();
+            $slider->addMedia($request['image'])->toMediaCollection('images');
         }
 
         return response()->json([
@@ -91,7 +95,8 @@ class SliderController extends Controller
     public function destroy(Request $request)
     {
         $uuid =$request->uuid;
-        $category =Slider::where('uuid',$uuid)->delete();
+        $slider =Slider::where('uuid',$uuid)->delete();
+        $slider->clearMediaCollection('images');
 
         return response()->json([
             'success' =>true,
